@@ -1,0 +1,32 @@
+<div class="container">
+    <div class="form-container">
+        <h3 class="form-title">Register</h3>
+        <form [formGroup]="registerForm" class="form" novalidate>
+            <div class="form-group">
+                <input formControlName="name" class="input-field" type="text" placeholder="Name">
+                <div *ngIf="registerForm.get('name')?.invalid && registerForm.get('name')?.touched" class="error-message">* Name is required</div>
+            </div>
+            <div class="form-group">
+                <input formControlName="role" class="input-field" type="text" placeholder="Role">
+                <div *ngIf="registerForm.get('role')?.invalid && registerForm.get('role')?.touched" class="error-message">* Role is required</div>
+            </div>
+            <div class="form-group">
+                <input formControlName="email" class="input-field" type="email" placeholder="Email">
+                <div *ngIf="registerForm.get('email')?.invalid && registerForm.get('email')?.touched" class="error-message">* Invalid email</div>
+            </div>
+            <div class="form-group">
+                <input formControlName="password" class="input-field" type="password" placeholder="Password">
+                <div *ngIf="registerForm.get('password')?.invalid && registerForm.get('password')?.touched" class="error-message">* Password is required</div>
+            </div>
+            <div class="form-group">
+                <input formControlName="confirmPassword" class="input-field" type="password" placeholder="Confirm Password">
+                <div *ngIf="registerForm.get('confirmPassword')?.invalid && registerForm.get('confirmPassword')?.touched" class="error-message">* Passwords must match</div>
+            </div>
+            <button [disabled]="registerForm.invalid" class="submit-button" (click)="register()">Register</button>
+        </form>
+
+        <div class="login-link">
+            <span>Already have an account? </span><a routerLink="/loginuser" class="link">Login Here</a>
+        </div>
+    </div>
+</div>

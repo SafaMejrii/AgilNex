@@ -1,0 +1,23 @@
+<div class="login-container">
+    <div class="login-card">
+      <h3 class="login-title">Login</h3>
+      <form [formGroup]="loginForm" class="login-form flex flex-col">
+        <div class="input-group">
+          <input formControlName="email" class="input-field" type="email" placeholder="Email">
+          <div *ngIf="loginForm.get('email')?.invalid && loginForm.get('email')?.touched && loginForm.get('email')?.dirty" class="error-message">* Email is required</div>
+          <div *ngIf="loginForm.get('email')?.errors?.['email'] && loginForm.get('email')?.touched && loginForm.get('email')?.dirty" class="error-message">* Invalid email</div>
+        </div>
+        <div class="input-group">
+          <input formControlName="password" class="input-field" type="password" placeholder="Password">
+          <div *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched && loginForm.get('password')?.dirty" class="error-message">* Password is required</div>
+        </div>
+        <button [disabled]="loginForm.invalid" class="login-button" (click)="login()">Login</button>
+      </form>
+      <div class="links">
+        <a routerLink="/forgotpassword" class="forgot-password">Forgot password?</a>
+        <span class="separator">|</span>
+        <a routerLink="/register" class="create-account">Create Account</a>
+      </div>
+    </div>
+  </div>
+  
